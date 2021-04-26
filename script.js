@@ -1,10 +1,28 @@
 
 // Get the id of current day and set the day inside of the html
 bird = moment()
-feathers = bird.format("dddd [the] Do [of] MMMM	")
-$("#currentDay").html(feathers);
+wings = bird.format("dddd [the] Do [of] MMMM	")
+$("#currentDay").html(wings);
+feathers = bird.format("H");
+console.log("++The hour is++");
+console.log(feathers);
 
-$("#link").attr("href");                    // get an attribute
+function oogway() {
+
+    present = "col-sm-4 col-md-6 present"
+    future = "col-sm-4 col-md-6 future"
+    past = "col-sm-4 col-md-6 past"
+
+    var ppfContainer = $("div.col-md-6").attr("class",future);
+    // var presentContainer = ppfContainer[feathers];
+    // presentContainer.attr("class","past");
+    console.log("++PastpresentFutCont++");
+    console.log(ppfContainer);
+    
+}
+
+oogway();
+
 $("#link").attr("href",'https://htmlg.com'); // set attribute
 
 // var skull = $("div:nth-child(2)");
@@ -12,11 +30,17 @@ $("#link").attr("href",'https://htmlg.com'); // set attribute
 // // console.log(skull);
 // console.log("++++++");
 // console.log(timeEl);
+
+
 $("#1AMbtn").click(function(){
     var taskInputEl = $("#1AM");
     tempus = taskInputEl.attr("id");
     duty = taskInputEl.val();
+    console.log("++time and duty+++");
+    console.log(tempus);
+    console.log(duty);
     createItem(tempus,duty);
+    // pullTask(tempus);
 })
 
 $("#2AMbtn").click(function(){
@@ -159,17 +183,44 @@ $("#12AMbtn").click(function(){
     createItem(tempus,duty);
 })
 
-// THIS IS IMPORTANT
+// Things to save onto local storage based on time (t) and duty (d)
 function createItem(t,d) {
 	localStorage.setItem(t, d); 
 }
 
-function getValue() {
-	return localStorage.getItem('1AM');  
-} // Gets the value of 'nameOfItem' and returns it
-console.log(getValue()); //'value';
+// function getValue() {
+// 	return localStorage.getItem('1AM');  
+// } // Gets the value of 'nameOfItem' and returns it
+// console.log(getValue()); //'value';
 
-localStorage.setItem('user_name', 'Rohit'); //store a key/value
-var retrievedUsername = localStorage.getItem('user_name'); //retrieve the key
-
-console.log(retrievedUsername);
+function pullTask(whichHour) {
+    var emptyInput = "#" + whichHour;
+    taskInputEl = $(emptyInput)
+    var retrievedTask = localStorage.getItem(whichHour); //retrieve the key
+    taskInputEl.val(retrievedTask);
+}
+// TODO(FS): The worst possible way to retrieve the values and overwrite them from local storage
+pullTask("1AM");
+pullTask("2AM");
+pullTask("3AM");
+pullTask("4AM");
+pullTask("5AM");
+pullTask("6AM");
+pullTask("7AM");
+pullTask("8AM");
+pullTask("9AM");
+pullTask("10AM");
+pullTask("11AM");
+pullTask("12PM");
+pullTask("1PM");
+pullTask("2PM");
+pullTask("3PM");
+pullTask("4PM");
+pullTask("5PM");
+pullTask("6PM");
+pullTask("7PM");
+pullTask("8PM");
+pullTask("9PM");
+pullTask("10PM");
+pullTask("11PM");
+pullTask("12AM");
